@@ -1,0 +1,23 @@
+{
+  "name": "async-break-finder",
+  "version": "0.0.0",
+  "description": "A tool for finding breaks in asynchronous context.",
+  "main": "async-break-finder.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bengl/pitesti.git"
+  },
+  "scripts": {
+    "test": "standard && c8 node test"
+  },
+  "author": "Bryan English <bryan@bryanenglish.com>",
+  "license": "MIT",
+  "dependencies": {
+    "archy": "^1.0.0"
+  },
+  "devDependencies": {
+    "c8": "^7.11.0",
+    "pitesti": "^3.0.0",
+    "standard": "^16.0.4"
+  }
+}

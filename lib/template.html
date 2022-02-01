@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Async Break Finder</title>
+  </head>
+  <body>
+    <p>
+No path found! There is no async context chain between the two pieces of code you've identified.
+    </p>
+    <p>
+Here is the async tree starting at the first point you identified.
+In one of the edges, asynchronous context is lost probably due to userland scheduling.
+    </p>
+    <div id="viz-tree"></div>
+    <p>
+Here is the async branch that leads to the second point you identified.
+Somewhere, you'll need to bind the two together.
+    </p>
+    <div id="viz-list"></div>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
+    <script src="https://unpkg.com/d3-graphviz@2.1.0/build/d3-graphviz.js"></script>
+    <script>
+      const treeDot = `{{tree}}`
+      const listDot = `{{list}}`
+
+      d3.select('#viz-tree')
+        .graphviz(true)
+        .zoom(false)
+        .renderDot(treeDot)
+
+      d3.select('#viz-list')
+        .graphviz(true)
+        .zoom(false)
+        .renderDot(listDot)
+    </script>
+  </body>
+</html>
