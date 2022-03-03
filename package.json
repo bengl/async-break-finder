@@ -5,7 +5,7 @@
   "main": "async-break-finder.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bengl/pitesti.git"
+    "url": "https://github.com/bengl/async-break-finder.git"
   },
   "scripts": {
     "test": "standard && c8 node test"
