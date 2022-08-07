@@ -1,6 +1,6 @@
 {
   "name": "async-break-finder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A tool for finding breaks in asynchronous context.",
   "main": "async-break-finder.js",
   "repository": {
