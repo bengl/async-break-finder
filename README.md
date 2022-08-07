@@ -40,6 +40,37 @@ stack frames, set the environment variable `ABF_KEEP_INTERNALS` to anything.
 To render the data as a graph using graphviz in an HTML file, set the
 environment variable `ABF_HTML` to anything.
 
+## Special mode for HTTP requests
+
+The provided `async-break-finder/http` module will automaticaly create a start
+point at the entry point of any inbound HTTP request, and check it when the
+response has finished. To use this, simply require or import
+`async-break-finder/http`, or use the command-line option `--require
+async-break-finder/http`. No additional code is required.
+
+```
+$ # e.g.
+$ node --require async-break-finder/http my-app.js
+```
+
+Note that success here does not imply that you don't have any async context
+breakage, but _does_ mean that you have none between your request and your
+response. If you have other asynchronous actions that aren't waited upon in
+order to send the response, they won't be checked here.
+
+You can retrieve the start point for a given request by using the exported
+`getStartForRequest` function.
+
+```js
+/* e.g. */
+import asyncBreakFinder from 'async-break-finder'
+import { getStartForRequest } from 'async-break-finder/http'
+
+/* And then, somewhere in you code where you have access to the request... */
+asyncBreakFinder(getStartForRequest(request))
+
+```
+
 ## What to do when your context is broken
 
 Eventually when looking through the data provided by error messages from this
