@@ -15,9 +15,14 @@ function frameIsInternal (frame) {
   return !frame.startsWith('/') || frame.includes(__filename)
 }
 
-function cleanStack (stack) {
+function getStack () {
+  const oldLimit = Error.stackTraceLimit
+  Error.stackTraceLimit = Infinity
+  const stack = new Error().stack
+  Error.stackTraceLimit = oldLimit
   const frames = stack.split('\n')
   frames.shift() // Error
+  frames.shift() // getStack
   const result = []
   for (let frame of frames) {
     frame = frame.replace('    at ', '')
@@ -82,7 +87,7 @@ class AsyncNode {
       this.parent.children.push(this)
     }
     this.children = []
-    this.stack = cleanStack(new Error().stack)
+    this.stack = getStack()
     idToNode.set(id, this)
   }
 
