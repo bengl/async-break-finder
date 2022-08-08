@@ -99,6 +99,12 @@ In one of the edges, asynchronous context is lost probably due to userland sched
 ║ │ breakExample (${__dirname}/test.js:35:3)
 ║ │ ${__dirname}/test.js:91:3
 ║ │ ${__dirname}/node_modules/create-test-promise/index.js:12:36
+║ │ promisify (${__dirname}/node_modules/create-test-promise/index.js:12:3)
+║ │ p (${__dirname}/node_modules/create-test-promise/index.js:25:17)
+║ │ safeWrap (${__dirname}/node_modules/create-test-promise/index.js:23:32)
+║ │ Array.<anonymous> (${__dirname}/node_modules/create-test-promise/index.js:39:15)
+║ │ PitestiSuite.runTest (${__dirname}/node_modules/pitesti/index.js:67:18)
+║ │ ${__dirname}/node_modules/pitesti/index.js:79:22
 ║ ├─┬ \u001b[33m### Immediate ###\u001b[0m
 ║ │ │ doThing (${__dirname}/test.js:23:3)
 ║ │ │ Immediate._onImmediate (${__dirname}/test.js:37:5)
@@ -146,7 +152,13 @@ Somewhere, you'll need to bind the two together.\u001b[0m
       ],
       stack: `breakExample (${__dirname}/test.js:35:3)\n` +
       `${__dirname}/test.js:91:3\n` +
-      `${__dirname}/node_modules/create-test-promise/index.js:12:36`
+      `${__dirname}/node_modules/create-test-promise/index.js:12:36\n` +
+      `promisify (${__dirname}/node_modules/create-test-promise/index.js:12:3)\n` +
+      `p (${__dirname}/node_modules/create-test-promise/index.js:25:17)\n` +
+      `safeWrap (${__dirname}/node_modules/create-test-promise/index.js:23:32)\n` +
+      `Array.<anonymous> (${__dirname}/node_modules/create-test-promise/index.js:39:15)\n` +
+      `PitestiSuite.runTest (${__dirname}/node_modules/pitesti/index.js:67:18)\n` +
+      `${__dirname}/node_modules/pitesti/index.js:79:22`
     })
     assertTreeEqual(e.list, {
       type: 'Timeout',

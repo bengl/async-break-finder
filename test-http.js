@@ -9,7 +9,7 @@ const int = setInterval(() => {
   }
 }, 100)
 
-function later(f) {
+function later (f) {
   q.unshift(bind(f))
 }
 
